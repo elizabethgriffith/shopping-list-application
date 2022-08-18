@@ -1,0 +1,20 @@
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.container, .category {
+  border: 1px solid black;
+  height: 100px;
+}
+
+
+.categorize {
+  display: flex;
+  justify-content: space-around;
+  margin: 2% 0;
+}
+
+.category {
+  width: 30%;
+}
