@@ -11,7 +11,17 @@
 <body>
   <h1>Shopping List</h1>
   <section class="container">
-
+    <h2>Grocery Input</h2>
+    <form>
+      <input type="text" name="item" id="item" placeholder="Enter item name here">
+      <select id="category" name="category">
+        <option value="select">Select a Store</option>
+        <option value="grocery">Grocery</option>
+        <option value="boxStore">Box Store</option>
+        <option value="homeImprovement">Home Improvement</option>
+      </select>
+      <input type="submit" value="Add Item" class="btn">
+    </form>
   </section>
   <section class="container categorize">
     <section class="category groceryStore">
