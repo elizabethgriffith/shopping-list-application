@@ -103,16 +103,3 @@ function storeItemInLocalStorage(item, category){
   localStorage.setItem('items', JSON.stringify(items))
 }
 
-function storeCategoryInLocalStorage(category){
-  let cate
-  if(localStorage.getItem('items') === null){
-    items = []
-  } else {
-    items = JSON.parse(localStorage.getItem('items'))
-  }
-
-  items.push(item)
-
-  localStorage.setItem('items', JSON.stringify(items))
-
-}
