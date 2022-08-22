@@ -13,39 +13,40 @@ loadEventListeners()
 
 function loadEventListeners(){
   // DOM load
-  //document.addEventListener('DOMContentLoaded', getItems)
+  document.addEventListener('DOMContentLoaded', getItems)
   // Add item
   form.addEventListener('submit', addForm)
 }
 
-// function getItems(){
-//   let items 
-//   if(localStorage.getItem('items') === null){
-//     items = []
-//   } else {
-//     items = JSON.parse(localStorage.getItem('items'))
-//   }
+function getItems(){
+  let items 
+  if(localStorage.getItem('items') === null){
+    items = []
+  } else {
+    items = JSON.parse(localStorage.getItem('items'))
+  }
 
-//   items.forEach(function(item){
-//     // create and append li with anchor and icon elements
-//     const li = document.createElement('li')
-//     li.appendChild(document.createTextNode(item))
-//     const link = document.createElement('a')
-//     link.className = 'delete-item'
-//     link.innerHTML = '<i class = "fa-solid fa-xmark"></i>'
-//     li.appendChild(link)
+  items.forEach(function(item){
+   
+    //create and append li with anchor and icon elements
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(item.itemName))
+    const link = document.createElement('a')
+    link.className = 'delete-item'
+    link.innerHTML = '<i class = "fa-solid fa-xmark"></i>'
+    li.appendChild(link)
   
-//     // append li to correct category
-//     if (categoryInput.value === 'grocery'){
-//      groceryList.appendChild(li)
-//     } else if (categoryInput.value === 'boxStore'){
-//       bigBoxList.appendChild(li)
-//     } else {
-//       homeImprovementList.appendChild(li)
-//     }
+    // append li to correct category
+    if (item.categoryName === 'grocery'){
+     groceryList.appendChild(li)
+    } else if (item.categoryName === 'boxStore'){
+      bigBoxList.appendChild(li)
+    } else {
+      homeImprovementList.appendChild(li)
+    }
 
-//   })
-// }
+  })
+}
 
 function addForm(e){
   // alert if empty fields
@@ -86,20 +87,23 @@ function addForm(e){
 function storeItemInLocalStorage(item, category){
   let items
 
+  // create object with item and category key value pairs
   let itemObj = {
     itemName: item,
     categoryName: category
   } 
 
-  
+  // check to see if anything in LS. No? create empty array. Yes? retrieve array
   if(localStorage.getItem('items') === null){
     items = []
   } else {
     items = JSON.parse(localStorage.getItem('items'))
   }
 
+  // add new item obj into array
   items.push(itemObj)
 
+  // store the array as a string in LS
   localStorage.setItem('items', JSON.stringify(items))
 }
 
