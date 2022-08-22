@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/54ad3bdc00.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
   <title>Shopping List Application</title>
 </head>
 <body>
-  <h1>My Shopping List</h1>
+  <h1 class = "specFont">MY SHOPPING LIST</h1>
   <section class="container simpleSection">
-    <h2>Item Input</h2>
+    <h2 class = "specFont">ITEM INPUT</h2>
     <form id="itemForm">
       <input type="text" name="item" id="item" placeholder="Enter Item Name Here">
       <select id="category" name="category">
         <option value="select">Select a Store</option>
         <option value="grocery">Grocery</option>
-        <option value="boxStore">Box Store</option>
+        <option value="boxStore">Big Box Store</option>
         <option value="homeImprovement">Home Improvement</option>
       </select>
       <input type="submit" value="Add Item" class="btn">
@@ -25,17 +26,17 @@
   </section>
   <section class="container categorize">
     <section class="category groceryStore">
-      <h2>Grocery Store</h2>
+      <h2 class = "specFont">GROCERY STORE</h2>
       <h3>Items Needed:</h3>
       <ul class="groceryCollection collection"></ul>
     </section>
     <section class="category boxStore">
-      <h2>Big Box Store</h2>
+      <h2 class = "specFont">BIG BOX STORE</h2>
       <h3>Items Needed:</h3>
       <ul class="bigBoxCollection collection"></ul>
     </section>
     <section class="category homeImprovementStore">
-      <h2>Home Improvement Store</h2>
+      <h2 class = "specFont">HOME IMPROVEMENT STORE</h2>
       <h3>Items Needed:</h3>
       <ul class="homeImprovementCollection collection"></ul>
     </section>

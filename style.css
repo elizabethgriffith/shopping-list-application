@@ -1,6 +1,12 @@
 body {
   color: #0B2027;
   background-color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-weight: lighter;
+}
+
+.specFont {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .simpleSection {
@@ -79,4 +85,16 @@ input, select {
 
 .btn {
   background: #ffffff;
+}
+
+.collection {
+  list-style: none;
+  padding: 5px;
+  padding-left: 30px;
+  margin: 0;
+}
+
+.collection-item {
+  display: flex;
+  justify-content: space-between;
 }

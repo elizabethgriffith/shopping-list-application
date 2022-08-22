@@ -68,7 +68,7 @@ function addForm(e){
   // create and append li with anchor and icon elements
   const li = document.createElement('li')
   li.className = 'collection-item'
-  li.appendChild(document.createTextNode(itemInput.value))
+  li.appendChild(document.createTextNode(itemInput.value.toLowerCase()))
   const link = document.createElement('a')
   link.className = 'delete-item'
   link.innerHTML = '<i class = "fa-solid fa-xmark"></i>'
