@@ -5,6 +5,7 @@ const categoryInput = document.querySelector('#category')
 const groceryList = document.querySelector('.groceryCollection')
 const bigBoxList = document.querySelector('.bigBoxCollection')
 const homeImprovementList = document.querySelector('.homeImprovementCollection')
+const filter = document.querySelector('#filter')
 
 
 
@@ -20,6 +21,8 @@ function loadEventListeners(){
   groceryList.addEventListener('click', deleteItem)
   bigBoxList.addEventListener('click', deleteItem)
   homeImprovementList.addEventListener('click', deleteItem)
+  // Filter items
+  filter.addEventListener('keyup', filterItems)
 
 }
 
@@ -35,6 +38,7 @@ function getItems(){
    
     //create and append li with anchor and icon elements
     const li = document.createElement('li')
+    li.className = 'collection-item'
     li.appendChild(document.createTextNode(item.itemName))
     const link = document.createElement('a')
     link.className = 'delete-item'
@@ -63,6 +67,7 @@ function addForm(e){
   
   // create and append li with anchor and icon elements
   const li = document.createElement('li')
+  li.className = 'collection-item'
   li.appendChild(document.createTextNode(itemInput.value))
   const link = document.createElement('a')
   link.className = 'delete-item'
@@ -141,4 +146,17 @@ function deleteItemFromLS(e){
   })
 
   localStorage.setItem('items', JSON.stringify(items))
+}
+
+function filterItems(e){
+  const text = e.target.value.toLowerCase()
+
+  document.querySelectorAll('.collection-item').forEach(function(li){
+    const item = li.firstChild.textContent
+    if (item.toLowerCase().indexOf(text) != -1){
+      li.style.display = 'block'
+    } else {
+      li.style.display = 'none'
+    }
+  })
 }
