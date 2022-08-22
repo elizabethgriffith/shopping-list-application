@@ -16,6 +16,11 @@ function loadEventListeners(){
   document.addEventListener('DOMContentLoaded', getItems)
   // Add item
   form.addEventListener('submit', addForm)
+  // Remove item
+  groceryList.addEventListener('click', deleteItem)
+  bigBoxList.addEventListener('click', deleteItem)
+  homeImprovementList.addEventListener('click', deleteItem)
+
 }
 
 function getItems(){
@@ -36,7 +41,7 @@ function getItems(){
     link.innerHTML = '<i class = "fa-solid fa-xmark"></i>'
     li.appendChild(link)
   
-    // append li to correct category
+    // append li to correct category list
     if (item.categoryName === 'grocery'){
      groceryList.appendChild(li)
     } else if (item.categoryName === 'boxStore'){
@@ -78,8 +83,8 @@ function addForm(e){
 
 
   // clear input
-  // itemInput.value = ''
-  // categoryInput.value = 'select'
+  itemInput.value = ''
+  categoryInput.value = 'select'
 
   e.preventDefault()
 }
@@ -107,3 +112,33 @@ function storeItemInLocalStorage(item, category){
   localStorage.setItem('items', JSON.stringify(items))
 }
 
+function deleteItem(e){
+  if (e.target.parentElement.classList.contains('delete-item')){
+    if(confirm('Are you sure?')){
+      e.target.parentElement.parentElement.remove()
+
+      // remove from LS
+      deleteItemFromLS(e.target.parentElement.parentElement)
+    }
+  }
+}
+
+function deleteItemFromLS(e){
+  let items
+
+  // check to see if anything in LS. No? create empty array. Yes? retrieve array
+  if(localStorage.getItem('items') === null){
+    items = []
+  } else {
+    items = JSON.parse(localStorage.getItem('items'))
+  }
+
+  items.forEach(function(item, index){
+    console.log(e)
+    if (e.textContent === item.itemName){
+      items.splice(index, 1)
+    }
+  })
+
+  localStorage.setItem('items', JSON.stringify(items))
+}
